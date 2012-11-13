@@ -49,6 +49,11 @@ public class Empresa implements ITrabajadorManagement{
 
     @Override
     public double pagarATrabajador(int cod) {
+       for(int i=0;i<empleados.size();i++){
+           if(cod==empleados.get(i).getCodigo())
+               return empleados.get(i).calcularPago();
+       
+       }
         /*
          * TODO: Buscar dentro de la coleccion el empleado que
          * tenga el codigo que recibe de parametro. Y si se
@@ -60,6 +65,13 @@ public class Empresa implements ITrabajadorManagement{
 
     @Override
     public void setHorasTrabajadas(int cod, int horast) {
+        for(int i=0;i<empleados.size();i++){
+            if(cod==empleados.get(i).getCodigo()){
+                if(empleados.get(i)instanceof EmpleadoPorHora){
+                   empleados.get(i);
+                }
+            }
+        }
         /*
          * TODO: Busca un empleado dentro de la coleccion con ese
          * codigo que recibe de parametro. Si se encuentra se valida
@@ -70,6 +82,13 @@ public class Empresa implements ITrabajadorManagement{
 
     @Override
     public void setVentas(int cod, double ventas) {
+        for(int i=0;i<empleados.size();i++){
+            if(cod==empleados.get(i).getCodigo()){
+                if(empleados.get(i)instanceof EmpleadoPorVenta){
+                    
+                }
+            }
+        }
         /*
          * TODO: Busca un empleado dentro de la coleccion con ese
          * codigo que recibe de parametro. Si se encuentra se valida
@@ -80,11 +99,45 @@ public class Empresa implements ITrabajadorManagement{
 
     @Override
     public void setFechaNacimiento(int cod, Date fecha) {
+        for(int i=0;i<empleados.size();i++){
+            if(cod==empleados.get(i).getCodigo()){
+                empleados.get(i).setFechanac(fecha);
+            }
         /*
          * TODO: Busca el empleado. Y si existe se le actualiza
          * su fecha de nacimiento.
          */
-        throw new UnsupportedOperationException("Not supported yet.");
+        }
+    }
+
+    @Override
+    public void setIHSS(int cod, int valor) {
+        for(int i=0;i<empleados.size();i++){
+            if(cod==empleados.get(i).getCodigo()){
+                empleados.get(i).setIhss(valor);
+            }
+        }
+    }
+
+    @Override
+    public void setTipoJerarquia(int cod, TipoJerarquia tipo) {
+        for(int i=0;i<empleados.size();i++){
+            if(cod==empleados.get(i).getCodigo()){
+                empleados.get(i).setTipo(tipo);
+            }
+        }
+    }
+
+    @Override
+    public Trabajador longevo() {
+        Trabajador temp= empleados.get(0);
+        int año = 2012;
+        for(int i=0;i<empleados.size();i++){
+            if(año>empleados.get(i).getFechanac().getYear()){
+                temp=empleados.get(i);
+            }
+        }
+        return temp;
     }
     
 }

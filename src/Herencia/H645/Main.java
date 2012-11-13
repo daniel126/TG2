@@ -95,14 +95,82 @@ public class Main {
     }
 
     private static void pagarEmpleado(int cod) {
+        empresa.pagarATrabajador(cod);
         /*
          * Aqui mandar a llamar la funcion que me
          * retorna el pagar de un empleado
          */
-        throw new UnsupportedOperationException("Not yet implemented");
+       
     }
 
     private static void submenu() {
+        int sub; 
+        do{
+            System.out.println("1- Registrar Horas Trabajadas");
+            System.out.println("2- Registrar Venta");
+            System.out.println("3- Actualizar Fecha de Nacimiento");
+            System.out.println("4- Actualizar Numero de IHSS");
+            System.out.println("5- Actualizar Tipo Jerarquia");
+            System.out.println("6- Regresar Menu Principal");
+            System.out.println("\nEscoja opcion: ");
+            sub = lea.nextInt();
+            
+            switch( sub ){
+                case 1:
+                    System.out.println("Ingrese Codigo: ");
+                    int cod = lea.nextInt();
+                    System.out.println("Ingrese Horas Trabajadas: ");
+                    int ht = lea.nextInt();
+                    empresa.setHorasTrabajadas(cod, ht);
+                    break;
+                case 2:
+                    System.out.println("Ingrese Codigo: ");
+                    cod = lea.nextInt();
+                    System.out.println("Ingrese Ventas: ");
+                    double vt = lea.nextDouble();
+                    empresa.setVentas(cod, vt);
+                    break;
+                case 3:
+                    System.out.println("Ingrese Codigo: ");
+                    cod = lea.nextInt();
+                    System.out.println("Ingrese Fecha: ");
+                    
+                    break;
+                case 4:
+                    System.out.println("Ingrese Codigo: ");
+                    cod = lea.nextInt();
+                    System.out.println("Ingrese Ventas: ");
+                    int ihss = lea.nextInt();
+                    empresa.setIHSS(cod, ihss);
+                    break;
+                case 5:
+                    System.out.println("Codigo: ");
+                    cod = lea.nextInt();
+                    System.out.println("1. Gerencial");
+                    System.out.println("2. Administrativo");
+                    System.out.println("3. Operativo");
+                    System.out.println("4. Esclavo");
+                    int el = lea.nextInt();
+                    switch(el){
+                        case 1:
+                            empresa.setTipoJerarquia(cod, TipoJerarquia.GERENCIAL);
+                            break;
+                        case 2:
+                            empresa.setTipoJerarquia(cod, TipoJerarquia.ADMINISTRATIVO);
+                            break;
+                        case 3:
+                            empresa.setTipoJerarquia(cod, TipoJerarquia.OPERATIVO);
+                            break;
+                        case 4:
+                            empresa.setTipoJerarquia(cod, TipoJerarquia.ESCLAVO);
+                            break;
+                    }default:{
+                        System.out.println("Eleccion no valida.");
+                    }
+                    
+                    
+            }
+        }while( sub != 6);
         /*
          * Este sub menu tiene las opciones de:
          * 1- Registrar Horas Trabajadas
@@ -118,7 +186,7 @@ public class Main {
          * este sub menu. SOLO se regresa a este menu si
          * se selecciona la opcion 5.
          */
-        throw new UnsupportedOperationException("Not yet implemented");
+       
     }
     
     
